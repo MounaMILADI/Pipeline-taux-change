@@ -1,0 +1,21 @@
+# --- Secrets : ne JAMAIS envoyer sur GitHub ---
+.env
+*.json.key
+cle_service*.json
+service_account*.json
+credentials*.json
+
+# --- Environnement Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- Données et logs locaux (régénérables) ---
+data/
+logs/
+
+# --- Divers ---
+.DS_Store
+.ipynb_checkpoints/
+.vscode/

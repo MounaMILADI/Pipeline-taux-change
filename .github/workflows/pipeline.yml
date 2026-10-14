@@ -1,0 +1,44 @@
+# Étape 04 - Automatisation du pipeline avec GitHub Actions
+# Exécution planifiée chaque jour ouvré après la publication des taux par la BCE,
+# + possibilité de lancer manuellement depuis l'onglet "Actions" de GitHub.
+
+name: Pipeline taux de change
+
+on:
+  schedule:
+    # Du lundi au vendredi à 15h30 UTC (17h30 heure de Paris en été, 16h30 en hiver),
+    # après la publication quotidienne des taux de référence de la BCE.
+    - cron: "30 15 * * 1-5"
+  workflow_dispatch:   # bouton "Run workflow" pour un lancement manuel
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Créer la clé du compte de service à partir du secret GitHub
+        # La clé n'est jamais dans le dépôt : elle est stockée chiffrée dans les Secrets GitHub
+        # et écrite dans un fichier temporaire uniquement le temps de l'exécution.
+        run: echo '${{ secrets.GCP_SA_KEY }}' > cle_service_bigquery.json
+
+      - name: Lancer le pipeline (extraction -> transformation -> chargement)
+        run: python src/main.py
+
+      - name: Conserver le fichier de log de l'exécution
+        if: always()   # même en cas d'échec, pour pouvoir diagnostiquer
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-pipeline-${{ github.run_number }}
+          path: logs/pipeline.log
+          retention-days: 30

@@ -1,0 +1,9 @@
+devise,annee,sens,categorie,taux_budget,montant_mensuel_devise
+USD,2025,achat,Aluminium et acier,1.04,400000
+USD,2026,achat,Aluminium et acier,1.17,400000
+CNY,2025,achat,Composants electroniques,7.56,1500000
+CNY,2026,achat,Composants electroniques,8.25,1500000
+CHF,2025,achat,Outillage,0.94,60000
+CHF,2026,achat,Outillage,0.93,60000
+GBP,2025,vente,Client britannique,0.84,150000
+GBP,2026,vente,Client britannique,0.88,150000
