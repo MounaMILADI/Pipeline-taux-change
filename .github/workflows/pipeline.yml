@@ -13,7 +13,9 @@ on:
 
 jobs:
   pipeline:
-    runs-on: ubuntu-latest
+    # Version de Linux fixée : "ubuntu-latest" bascule vers Ubuntu 26 à partir du 19/10/2026,
+    # on garde un environnement stable et identique à celui testé.
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Récupérer le code du dépôt
