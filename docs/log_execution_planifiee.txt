@@ -1,0 +1,27 @@
+2026-10-15 19:17:24,154 | INFO | === Début de l'extraction ===
+2026-10-15 19:17:24,154 | INFO | Appel API : https://api.frankfurter.dev/v2/providers/ecb/rates | paramètres : {'from': '2025-01-01', 'quotes': 'USD,CNY,CHF,GBP'}
+2026-10-15 19:17:35,751 | INFO | Succès : 1832 lignes reçues, du 2024-12-31 au 2026-10-15
+2026-10-15 19:17:35,756 | INFO | Réponse brute sauvegardée : data/raw/taux_bruts_2026-10-15.json
+2026-10-15 19:17:35,756 | INFO | === Fin de l'extraction : OK ===
+2026-10-15 19:17:35,756 | INFO | === Début de la transformation ===
+2026-10-15 19:17:35,756 | INFO | Lecture du fichier brut : data/raw/taux_bruts_2026-10-15.json
+2026-10-15 19:17:35,761 | INFO | Lignes brutes : 1832
+2026-10-15 19:17:35,768 | INFO | T3 devises hors périmètre retirées : 0
+2026-10-15 19:17:35,769 | INFO | T5 lignes avec date ou taux manquant retirées : 0
+2026-10-15 19:17:35,769 | INFO | T4 lignes antérieures au 2025-01-01 retirées : 4
+2026-10-15 19:17:35,770 | INFO | T6 doublons (date_taux, devise) retirés : 0
+2026-10-15 19:17:35,773 | INFO | CQ1 OK : tous les taux sont > 0
+2026-10-15 19:17:35,773 | INFO | CQ2 OK : aucune date future
+2026-10-15 19:17:35,774 | INFO | CQ3 OK : 457 dates, chacune avec les 4 devises
+2026-10-15 19:17:35,775 | INFO | CQ4 OK : aucune cotation le week-end (absence normale, non comblée)
+2026-10-15 19:17:35,776 | INFO | CQ5 OK : clé (date_taux, devise) unique
+2026-10-15 19:17:35,788 | INFO | Succès : 1828 lignes propres, du 2025-01-02 au 2026-10-15 -> data/processed/taux_propres.csv
+2026-10-15 19:17:35,788 | INFO | === Fin de la transformation : OK ===
+2026-10-15 19:17:35,788 | INFO | === Début du chargement BigQuery ===
+2026-10-15 19:17:36,630 | INFO | Lignes propres disponibles : 1828
+2026-10-15 19:17:38,465 | INFO | Lignes déjà présentes dans bresse-fx.bresse_fx.taux_change : 1824
+2026-10-15 19:17:38,467 | INFO | Anti-doublons : 1824 lignes déjà connues ignorées
+2026-10-15 19:17:41,528 | INFO | Chargées : 4 nouvelles lignes (du 2026-10-15 au 2026-10-15)
+2026-10-15 19:17:41,832 | INFO | Total dans la table après chargement : 1828 lignes
+2026-10-15 19:17:41,833 | INFO | === Fin du chargement : OK ===
+2026-10-15 19:17:41,833 | INFO | ##### PIPELINE : OK #####
