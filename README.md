@@ -2,7 +2,7 @@
 
 Pipeline de données **API → Python → BigQuery → Data Studio** qui collecte chaque jour ouvré les taux de change officiels de la Banque centrale européenne (BCE), les compare au budget de l'entreprise et mesure leur impact en euros sur le résultat.
 
-> **Dashboard Data Studio (lecture seule) :** `https://datastudio.google.com/reporting/fbead226-4c40-45ca-bb59-aaab2c293be3`
+> **Dashboard Data Studio (lecture seule) :** https://datastudio.google.com/reporting/fbead226-4c40-45ca-bb59-aaab2c293be3
 
 ---
 
@@ -392,7 +392,7 @@ python src/load.py
 
 ## 11. Dashboard
 
-> **Lien :** `https://datastudio.google.com/reporting/fbead226-4c40-45ca-bb59-aaab2c293be3` (accès en lecture, sources configurées avec les identifiants du propriétaire)
+> **Lien :** https://datastudio.google.com/reporting/fbead226-4c40-45ca-bb59-aaab2c293be3 (accès en lecture, sources configurées avec les identifiants du propriétaire)
 
 Export PDF : `docs/dashboard.pdf`
 
